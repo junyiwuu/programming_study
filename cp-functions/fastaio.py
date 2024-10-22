@@ -14,3 +14,18 @@ if __name__=="__main__":
     else:
         print("Test passed")
 
+
+
+def readFasta(fname):
+    FASTA=open(fname, "r")
+    header=FASTA.readline()
+    protein="" # build up the sequence here
+    for ll in FASTA:
+        protein+=ll.rstrip() # remove trailing '\n'
+    FASTA.close()
+    # Done. This is just    pretty-printing
+    (code, name)= header.split('|')
+    data = {'name': name,
+            'code': code,
+            'seq' : protein}
+    return data
